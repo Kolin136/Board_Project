@@ -26,7 +26,7 @@ public class BoardService {
     }
 
 
-    public Long updateBoard(Long id, String password, BoardRequestDto requestDto) {
+    public BoardResponseDto updateBoard(Long id, String password, BoardRequestDto requestDto) {
     }
 
     public Long deleteBoard(Long id, String password) {
