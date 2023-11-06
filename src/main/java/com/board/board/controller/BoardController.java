@@ -3,9 +3,15 @@ package com.board.board.controller;
 import com.board.board.dto.BoardRequestDto;
 import com.board.board.dto.BoardResponseDto;
 import com.board.board.service.BoardService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
+
+
+//시간이 부족해서 코드 중복처리(서비스쪽의 패스워드 체크등),삭제 메소드 상태처리는 못 했습니다.
 
 @RequestMapping("/api")
 @RestController
@@ -22,9 +28,22 @@ public class BoardController {
         return boardService.createBoard(requestDto);
     }
 
+    //ResponseEntity는 상태코드도 같이 보내고 싶을때
     @GetMapping("/board/{id}")
-    public BoardResponseDto getIdBoard(@PathVariable Long id) {
-        return boardService.getIdBoard(id);
+    public ResponseEntity<Object> getIdBoard(@PathVariable Long id) {
+
+        try
+        {
+            //body까지 같이 리턴 하고 싶으면 ok안에 넣기
+            return  ResponseEntity.ok(boardService.getIdBoard(id));
+        }
+        catch (Exception e)
+        {
+            //NOT_FOUND는 404에러
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+
     }
 
     @GetMapping("/board")
@@ -32,11 +51,19 @@ public class BoardController {
         return boardService.getBoards();
     }
 
-    // 패스워드는 RequestHeader로 받을거라 RequestBody에(required = false)옵션을 줬지만 모든 필드에 다 적용인듯한...
-    // 해결 방법은 특정 필드 required = false 적용이나 수정용 비밀번호 필드없는 RequestDto 새로 만들기??
+
     @PutMapping("/board/{id}")
-    public BoardResponseDto updateBoard(@PathVariable Long id, @RequestBody BoardRequestDto requestDto){
-        return boardService.updateBoard(id,requestDto);
+    public  ResponseEntity<Object> updateBoard(@PathVariable Long id, @RequestBody BoardRequestDto requestDto){
+        BoardResponseDto boardResponseDto = boardService.updateBoard(id,requestDto);
+
+          if(boardResponseDto!=null){
+              return  ResponseEntity.ok(boardResponseDto);
+          }
+          else{
+              System.out.println("비번틀림");
+              return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+          }
+
     }
 
     @DeleteMapping("/board/{id}")
