@@ -32,13 +32,15 @@ public class BoardController {
         return boardService.getBoards();
     }
 
-    // 패스워드는 RequestHeader로 받을거라 RequestBody에(required = false)옵션을 줬지만 모든 필드에 다 적용인듯한...
-    // 해결 방법은 특정 필드 required = false 적용이나 수정용 비밀번호 필드없는 RequestDto 새로 만들기??
+
     @PutMapping("/board/{id}")
     public BoardResponseDto updateBoard(@PathVariable Long id, @RequestBody BoardRequestDto requestDto){
         return boardService.updateBoard(id,requestDto);
     }
 
+    //슬랙의 다른분은 Delete할시 @RequestHeader를 이용한다 해서 조금 알아보니, 아직 정확한 이유나 원리는 잘 모르지만
+    //토큰,세션,jwt등 비밀번호 암호화를 하고 RequestHeader에 담기위해서 사용한다는듯하니
+    //지금은 토큰,세션,jwt등 아니라서 RequestBody에 하는게 맞죠?
     @DeleteMapping("/board/{id}")
     public Long deleteBoard(@PathVariable Long id,@RequestBody(required = false) BoardRequestDto requestDto){
         return boardService.deleteBoard(id,requestDto);
