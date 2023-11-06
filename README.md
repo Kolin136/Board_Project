@@ -1,4 +1,5 @@
 # Board_Project
+# 추가 선택 사항은 exception 브랜치에서 작업
 # 프로젝트 요구 사항
 - [ ]  게시글 작성 기능
     - `제목`, `작성자명`, `비밀번호`, `작성 내용`, `작성일`을 저장할 수 있습니다.
@@ -27,13 +28,13 @@
     Status Code, Error 메시지등의 정보를 반환합니다.
 
 # USECASE
-![UML](https://github.com/Kolin136/Board_Project/assets/24729045/3e74f613-2aca-4843-a985-4a9689dc2357)
+
 
 # ERD
-![ERD](https://github.com/Kolin136/Board_Project/assets/24729045/a7f95a2a-74e6-493e-a5fa-6539c690684b)
+
 
 # Api
-![api](https://github.com/Kolin136/Board_Project/assets/24729045/fbf4c444-b663-4ee9-84c4-59084a251555)
+
 
 
 
