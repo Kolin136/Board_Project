@@ -22,11 +22,7 @@ public class BoardService {
     public BoardResponseDto createBoard(BoardRequestDto requestDto) {
         Board board = new Board(requestDto);
 
-        Board saveBoard = boardRepository.save(board);
-
-        BoardResponseDto boardResponseDto = new BoardResponseDto(saveBoard);
-
-//        BoardResponseDto boardResponseDto = new BoardResponseDto(boardRepository.save(board));
+        BoardResponseDto boardResponseDto = new BoardResponseDto(boardRepository.save(board));
 
         return boardResponseDto;
     }
@@ -44,7 +40,8 @@ public class BoardService {
     @Transactional(readOnly = true)
     public List<BoardResponseDto> getBoards() {
 
-        return boardRepository.findAll().stream().map(BoardResponseDto::new).toList();
+        return boardRepository.findAllByOrderByModifiedAtDesc()
+                .stream().map(BoardResponseDto::new).toList();
 
     }
 
