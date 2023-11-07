@@ -1,4 +1,6 @@
 # Board_Project
+# 추가 선택 사항은 exception 브랜치에서 작업
+스프링의 예외처리를 위해 RestControllerAdvice를 알아보다가 아직 이해가 안되서 ResponseEntity도 알아보고 ResponseEntity적용했습니다.
 # 프로젝트 요구 사항
 - [ ]  게시글 작성 기능
     - `제목`, `작성자명`, `비밀번호`, `작성 내용`, `작성일`을 저장할 수 있습니다.
@@ -26,14 +28,14 @@
    -선택한 게시글 수정 및 삭제 요청 시 비밀번호가 일치하지 않을 경우 API 요청 실패(예외상황)에 대해 판단할 수 있는 
     Status Code, Error 메시지등의 정보를 반환합니다.
 
-# USECASE
-![UML](https://github.com/Kolin136/Board_Project/assets/24729045/3e74f613-2aca-4843-a985-4a9689dc2357)
+# UML
+![usecase](./images/UML.PNG)
 
 # ERD
-![ERD](https://github.com/Kolin136/Board_Project/assets/24729045/a7f95a2a-74e6-493e-a5fa-6539c690684b)
+![erd](./images/ERD.PNG)
 
 # Api
-![api](https://github.com/Kolin136/Board_Project/assets/24729045/fbf4c444-b663-4ee9-84c4-59084a251555)
+![api](./images/api.PNG)
 
 
 
