@@ -1,5 +1,5 @@
 # Board_Project
-# 추가 선택 사항은 exception 브랜치에서 작업
+# 추가 선택 사항은 exception 브랜치에서 작업후 병합
 스프링의 예외처리를 위해 RestControllerAdvice를 알아보다가 아직 이해가 안되서 ResponseEntity도 알아보고 ResponseEntity적용했습니다.
 # 프로젝트 요구 사항
 - [ ]  게시글 작성 기능
