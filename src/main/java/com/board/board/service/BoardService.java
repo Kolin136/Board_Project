@@ -51,7 +51,7 @@ public class BoardService {
         Board board = findBoard(id);
         BoardResponseDto boardResponseDto = null;
 
-        if (board.getPassword().equals(requestDto.getPassword())) {
+        if (board.pwCheck(requestDto) ) {
             board.update(requestDto);
             boardResponseDto = new BoardResponseDto(board);
         } else {
@@ -65,14 +65,14 @@ public class BoardService {
 
         Board board = findBoard(id);
 
-        if (board.getPassword().equals(requestDto.getPassword())) {
+        if (board.pwCheck(requestDto)) {
             boardRepository.delete(board);
-
+            return id;
         } else {
             System.out.println("비번 틀린 메세지");
         }
 
-        return id;
+        return null;
     }
 
 
@@ -83,8 +83,6 @@ public class BoardService {
                 new IllegalArgumentException("선택한 글은 존재하지 않습니다.")
         );
     }
-
-
 
 
 }

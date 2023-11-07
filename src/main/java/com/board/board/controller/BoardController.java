@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-//시간이 부족해서 코드 중복처리(서비스쪽의 패스워드 체크등),삭제 메소드 상태처리는 못 했습니다.
+
 
 @RequestMapping("/api")
 @RestController
@@ -66,9 +66,18 @@ public class BoardController {
 
     }
 
+
     @DeleteMapping("/board/{id}")
-    public Long deleteBoard(@PathVariable Long id,@RequestBody(required = false) BoardRequestDto requestDto){
-        return boardService.deleteBoard(id,requestDto);
+    public ResponseEntity<Object> deleteBoard(@PathVariable Long id,@RequestBody(required = false) BoardRequestDto requestDto){
+        Long deleteId = boardService.deleteBoard(id,requestDto);
+
+        if(deleteId!=null){
+            return  ResponseEntity.ok().build();
+        }
+        else{
+            System.out.println("비번틀림");
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 
 
