@@ -1,6 +1,6 @@
 # Board_Project
 # 추가 선택 사항은 exception 브랜치에서 작업
-스프링의 예외처리를 위해 RestControllerAdvice를 알아보다가 아직 이해가 안되서 ResponseEntity도 알아보고 일부만 ResponseEntity적용했습니다.
+스프링의 예외처리를 위해 RestControllerAdvice를 알아보다가 아직 이해가 안되서 ResponseEntity도 알아보고 ResponseEntity적용했습니다.
 # 프로젝트 요구 사항
 - [ ]  게시글 작성 기능
     - `제목`, `작성자명`, `비밀번호`, `작성 내용`, `작성일`을 저장할 수 있습니다.
