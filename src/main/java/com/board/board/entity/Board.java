@@ -44,4 +44,9 @@ public class Board extends Timestamped {
         this.contents = requestDto.getContents();
     }
 
+    public boolean pwCheck(BoardRequestDto requestDto){
+        return this.password.equals(requestDto.getPassword());
+    }
+
+
 }
